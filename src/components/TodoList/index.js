@@ -1,42 +1,69 @@
 import React from "react"
 import "./todo.css"
+import { connect } from "react-redux"
 import {Card,CardHeader,TableCell,Fab,Button} from "@material-ui/core"
-import {Edit} from "@material-ui/icons"
-
+import {Edit,CheckCircle, Cancel} from "@material-ui/icons"
+import {done,notDone,deleteTodo,addTodo} from "../../action"
+import EditList from "../EditList";
 class TodoList extends React.Component{
     constructor(props){
         super(props);
         this.state={
+          id: '',
+          title: '',
+          completed: false,
         }
     }
+    handleChange(id, completed) {
+      if (completed === false){
+        this.props.notDone(id);
+      }
+      else{
+         this.props.done(id);
+      }
+    }
+    removeTodo(id) {
+      this.props.deleteTodo(id)
+    }
     render(){
+      console.log(this.props);
+      const {todos}=this.props;
         return(
-            <div>
-            <div className="square">
-              <Card>
+            <div> 
+              {todos.map((todo, index) =>
+            <div key={index} className="todoCard">
+              <Card className={todo.completed === false ? "done" : "notDone"}>
                 <CardHeader
-                  actAsExpander={false}
-                  showExpandableButton={false}
+                  title={todo.title}
                 />
                 <TableCell>
                   <Fab
-                    mini={true}
                     className="doneBtn"
-                    backgroundColor='green'
+                    onClick={()=>this.handleChange(todo.id,todo.completed)}
                   >
+                     { todo.completed === false ? <CheckCircle className="ok" />:<Cancel className="cancel" />}
                   </Fab>
   
                 </TableCell>
                 <TableCell>
-                    <Edit />
+                    <EditList todoId={todo.id} todoTitle={todo.title} />
                 </TableCell>
                 <TableCell>
-                   <Button secondary={true}> Delete</Button>
+                   <Button primary={true} onClick={() => this.removeTodo(todo.id)}> Delete</Button>
                 </TableCell>
               </Card>
             </div>
+              )}
         </div>
         )
     }
 }
-export default TodoList;
+const mapStateToProps=(state)=>{
+  return {todos:state.todos};
+}
+const mapDispatchToProps = dispatch => ({
+  done: todoId => dispatch(done(todoId)),
+  notDone: todoId => dispatch(notDone(todoId)),
+  deleteTodo: todoId => dispatch(deleteTodo(todoId))
+});
+export default connect(mapStateToProps,mapDispatchToProps)(TodoList);

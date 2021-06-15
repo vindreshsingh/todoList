@@ -1,51 +1,56 @@
 import React from "react";
 import {Fab} from "@material-ui/core"
 import {AddCircle} from "@material-ui/icons";
+import { addTodo } from '../../action';
+import {connect} from "react-redux"
 import "./input.css";
 class InputText extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            todo:'',
+            title:'',
             msg:'',
-
+            completed:false
         }
     this.handleChange=this.handleChange.bind(this)
     }
-    handleChange=(e)=>{
+    handleChange(e){
         const updateState = {};
         updateState[e.target.name] = e.target.value;
         this.setState({
-            todo:e.target.value
+            title:e.target.value
         })
 
     }
   handleSubmited(){
-  if(this.state.todo===''){
+  if(this.state.title===''){
      this.setState({
         msg:"please enter your todo"   
      }) 
   }
   else{
-      this.state({
+      this.setState({
           msg:''
+        
       })
+      this.props.addTodo(this.state)
   }
   }
     render(){
-        const {todo} =this.state;
+        console.log(this.props);
+        const {title} =this.state;
         return (
           <div>
               <form
                onSubmit={(e)=>{ e.preventDefault();
                 this.handleSubmited()
-                this.setState({todo: ''})
+                this.setState({title: '',createdAt: ''})
                 }}
               >
                   <input 
                     type="text"
-                    name="todo"
-                    value={todo}
+                    name="title"
+                    value={title}
                     onChange={this.handleChange}
                     className="formAdd"
                   />
@@ -58,4 +63,7 @@ class InputText extends React.Component{
         )
     }
 }
-export default InputText;
+const mapDispatchToProps = dispatch => ({
+    addTodo: newTodo => dispatch(addTodo(newTodo)),
+  })
+export default connect(null,mapDispatchToProps)(InputText);

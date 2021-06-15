@@ -16,9 +16,9 @@ export const deleteTodo=(todoId)=>({
     payload:todoId
 })
 
-export const editTodo=(todoId)=>({
+export const editTodo=(todo)=>({
     type:EDIT_TODO,
-    payload:todoId
+    payload:todo
 });
 
 export const done=(todoId)=>({
@@ -30,8 +30,8 @@ export const notDone=(todoId)=>({
     payload:todoId
 })
 
-export const searchTodo=(todId)=>({
+export const searchTodo=()=>({
     type:SEARCH_TODO,
-    payload:todoId
+    payload:1
 
 })

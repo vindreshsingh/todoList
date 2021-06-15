@@ -3,8 +3,12 @@ import InputText  from "../InputText";
 import Search from "../Search"
 import TodoList from "../TodoList";
 class HomePage extends React.Component{
-    render(){
-        return (
+    constructor(props){
+        super(props);
+    }
+      render(){
+          console.log("home",this.props);
+          return(
           <div>
              <div className="input-search">
                  <InputText />
@@ -14,7 +18,7 @@ class HomePage extends React.Component{
                  <TodoList />
              </div>
           </div>
-        )
-    }
+          )
+      }
 }
 export default HomePage;
