@@ -1,8 +1,8 @@
 {
     "blueprints": [
         {
-            "invoke": "App.js",
-            "write_to": "App.txt"
+            "invoke": "index.js",
+            "write_to": "index.txt"
         }
     ]
 }
