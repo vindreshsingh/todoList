@@ -1,0 +1,9 @@
+{
+    "source":{
+        "index.js":{
+            "context":"generic",
+            "target_ci":true,
+            "target_sandbox":false
+    }
+}
+}
