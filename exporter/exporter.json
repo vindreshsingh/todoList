@@ -9,13 +9,17 @@
     "usesBrands": true,
     "config": {
         "sources": "sources.json",
-        "output": "output.json"
+        "output": "output.json",
+        "js": "src/index.js"
     },
     "engines": {
         "pulsar": "1.0.0",
         "supernova": "1.0.0"
     },
     "tags": [
-        "Flutter"
+        "HTML",
+        "CSS",
+        "Preview",
+        "JS"
     ]
 }
