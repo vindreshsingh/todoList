@@ -1,5 +1,5 @@
 {
-    "id": "io.supernova.dopamine",
+    "id": "io.supernova.example-exporter",
     "name": "HTML Preview",
     "description": "To DO list",
     "source_dir": "src",

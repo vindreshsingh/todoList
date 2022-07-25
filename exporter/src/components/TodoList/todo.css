@@ -1,0 +1,19 @@
+.doneBtn{
+    margin-left: 10px;
+    margin-top: 20px;
+  }
+  .done{
+    background-color: rgb(175, 42, 42);
+  }
+  .notDone{
+    background-color: #fff;
+  }
+  .todoCard{
+    margin-top: 20px;
+  }
+  .ok{
+      color:green;
+  }
+  .cancel{
+      color:red;
+  }
