@@ -12,12 +12,16 @@ class EditList extends React.Component {
     this.state = {
       id: this.props.todoId,
       open: false,
-      title: this.props.todoTitle
+      title: this.props.todoTitle,
+      completed:this.props.completed
     };
   }
 
   handleOpen = () => {
-    this.setState({open: true});
+    this.setState({
+      open: true,
+      title:this.props.todoTitle
+    });
   };
 
   handleClose = () => {
@@ -29,7 +33,10 @@ class EditList extends React.Component {
    updateState[e.target.name] = e.target.value;
    this.setState(updateState);
  }
-
+ saveData=()=>{
+    this.props.editTodo(this.state);
+    this.setState({ title: '',open:false });
+ }
   render() {
     // console.log("ini parsing ID ", this.props.todoId);
 
@@ -56,11 +63,7 @@ class EditList extends React.Component {
       <Button
         primary={true}
         keyboardFocused={true}
-        onClick={this.handleClose}
-        onClick={() => {
-          this.props.editTodo(this.state);
-          this.setState({ title: '' });
-        }}
+        onClick={this.saveData}
       >Save</Button>
         </DialogActions>
       </Dialog>

@@ -1,0 +1,38 @@
+{
+    "id": "io.supernova.todo",
+    "name": "HTML Preview",
+    "description": "To DO list",
+    "source_dir": "src",
+    "version": "1.0.0",
+    "tags": [
+        "HTML",
+        "CSS",
+        "Preview",
+        "JS"
+    ],
+    "author": "Vindresh Singh",
+    "organization": "Supernova",
+    "homepage": "https://supernova.io/todo",
+    "config": {
+        "output": "output.json",
+        "sources": "sources.json",
+        "js": "src/index.js"
+    },
+    "engines": {
+        "pulsar": "1.0.0",
+        "supernova": "1.0.0"
+    },
+    "contributes": {
+        "configuration": [{
+            "default": true,
+            "key": "generateColors",
+            "label": "Generate color list page",
+            "type": "boolean"
+        }, {
+            "default": true,
+            "key": "generateBorders",
+            "label": "Generate border list page",
+            "type": "boolean"
+        }]
+    }
+}

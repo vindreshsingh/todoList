@@ -8,8 +8,8 @@ class Search extends React.Component{
         return(
             <div>
                 <TextField
-                label="enter your todo"
-                type="text"
+                    label="enter your todo"
+                    type="text"
                 />
             </div>
         )

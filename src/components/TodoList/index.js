@@ -28,32 +28,32 @@ class TodoList extends React.Component{
     render(){
       console.log(this.props);
       const {todos}=this.props;
-        return(
-            <div> 
-              {todos.map((todo, index) =>
-            <div key={index} className="todoCard">
-              <Card className={todo.completed === false ? "done" : "notDone"}>
-                <CardHeader
-                  title={todo.title}
-                />
-                <TableCell>
-                  <Fab
-                    className="doneBtn"
-                    onClick={()=>this.handleChange(todo.id,todo.completed)}
-                  >
-                     { todo.completed === false ? <CheckCircle className="ok" />:<Cancel className="cancel" />}
-                  </Fab>
-  
-                </TableCell>
-                <TableCell>
-                    <EditList todoId={todo.id} todoTitle={todo.title} />
-                </TableCell>
-                <TableCell>
-                   <Button primary={true} onClick={() => this.removeTodo(todo.id)}> Delete</Button>
-                </TableCell>
-              </Card>
-            </div>
-              )}
+      return(
+        <div> 
+            {todos.map((todo, index) =>
+              <div key={index} className="todoCard">
+                <Card className={todo.completed === false ? "done" : "notDone"}>
+                  <CardHeader
+                    title={todo.title}
+                  />
+                  <TableCell>
+                    <Fab
+                      className="doneBtn"
+                      onClick={()=>this.handleChange(todo.id,todo.completed)}
+                    >
+                      { todo.completed === true ? <CheckCircle className="ok" />:<Cancel className="cancel" />}
+                    </Fab>
+    
+                  </TableCell>
+                  <TableCell>
+                      <EditList todoId={todo.id} todoTitle={todo.title} />
+                  </TableCell>
+                  <TableCell>
+                    <Button primary={true} onClick={() => this.removeTodo(todo.id)}> Delete</Button>
+                  </TableCell>
+                </Card>
+              </div>
+            )}
         </div>
         )
     }

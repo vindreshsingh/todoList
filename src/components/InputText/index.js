@@ -12,7 +12,7 @@ class InputText extends React.Component{
             msg:'',
             completed:false
         }
-    this.handleChange=this.handleChange.bind(this)
+        this.handleChange=this.handleChange.bind(this)
     }
     handleChange(e){
         const updateState = {};
@@ -23,30 +23,30 @@ class InputText extends React.Component{
 
     }
   handleSubmited(){
-  if(this.state.title===''){
+    if(this.state.title===''){
      this.setState({
         msg:"please enter your todo"   
-     }) 
-  }
-  else{
+        }) 
+    }
+    else{
       this.setState({
           msg:''
         
-      })
+         })
       this.props.addTodo(this.state)
-  }
+    }
   }
     render(){
         console.log(this.props);
         const {title} =this.state;
         return (
-          <div>
-              <form
-               onSubmit={(e)=>{ e.preventDefault();
-                this.handleSubmited()
-                this.setState({title: '',createdAt: ''})
-                }}
-              >
+            <div>
+                <form
+                    onSubmit={(e)=>{ e.preventDefault();
+                    this.handleSubmited()
+                    this.setState({title: '',createdAt: ''})
+                    }}
+                >
                   <input 
                     type="text"
                     name="title"
@@ -63,7 +63,12 @@ class InputText extends React.Component{
         )
     }
 }
+const mapStateToProps =(state)=>{
+    return{
+        todos:state.todos
+    }
+}
 const mapDispatchToProps = dispatch => ({
     addTodo: newTodo => dispatch(addTodo(newTodo)),
   })
-export default connect(null,mapDispatchToProps)(InputText);
+export default connect(mapStateToProps,mapDispatchToProps)(InputText);

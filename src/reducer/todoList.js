@@ -57,6 +57,7 @@ const notDone=(state, todoId)=>{
   const editTodo = (state, updateTodo) => {
     console.log(" ", updateTodo);
     const newState = state.map(todo => {
+      console.log("tod and id",todo,todo.id);
       if (todo.id === updateTodo.id) {
         return {
           id: todo.id,
